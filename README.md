@@ -1,12 +1,14 @@
-Justastudyapp June 2026
+Justastudyapp, June 2026
+
 simple timer to replace using ones on the web for personal use.
-made into an app with an installer using Tauri.
+Made into an app with an installer using Tauri.
 
 [run it here from the web!](https://cryogopher.github.io/JustAStudyApp/) 
 
 [Figma Design](https://www.figma.com/site/BOXrJ7rtusOWnA1UwgYutc/Study-App?node-id=0-1&t=UOiVCOAHIpHoaVG0-1)
 
 (June): 
+
 Tools:
 - React, Tauri
 
