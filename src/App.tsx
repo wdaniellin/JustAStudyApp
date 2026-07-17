@@ -8,6 +8,7 @@ import crumpleSound from "./assets/crumple.mp3"; //.mp3
 
 
 function App() {
+  
   //Timer states
   const [minutes, setMinutes] = useState<number>(30);
   const [seconds, setSeconds] = useState<number>(0);
@@ -26,6 +27,7 @@ function App() {
   (tab) depending on the remaining time left on the timer when active,
    using useEffect(), build into react)*/
   useEffect(() => {
+    
 
     //declare string out of the remaining time
     const timeString = `${formatTime(minutes)}:${formatTime(seconds)}`;
@@ -38,13 +40,17 @@ function App() {
     else{
       newTitle = 'JustAStudyApp';
     }
+    
 
     //set title of doccument to the string
     document.title = newTitle;
-    //Update the window frame title
-    const appWindow = getCurrentWindow();
-    appWindow.setTitle(newTitle).catch((err) => console.error(err));
-
+    
+    //Web Guard: Only attempt to update the Tauri desktop window frame title if running inside Tauri
+    if ((window as any).__TAURI_INTERNALS__) {
+      const appWindow = getCurrentWindow();
+      appWindow.setTitle(newTitle).catch((err) => console.error(err));
+    }
+    
     //counting interval
     let interval: any = null;
     if (isActive) {
@@ -148,6 +154,7 @@ function App() {
   //yay actual html part
   //clean up the options screen heavily after
   return (
+    
     <div className={`appContainer ${isBreakMode ? "break-theme" : "study-theme"}`}>
 
       {/*options menu overlay first bc it goes before the rest of the site */}
